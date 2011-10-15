@@ -1,0 +1,31 @@
+#!/bin/env bash
+# Author: dmatosl <http://github.com/dmatosl>
+
+# parse parameters
+while getopts :u:d:a: args
+do
+    case "$args" in
+        u)  # check if user exists
+            echo $OPTARG
+            ;;
+        d)  # check if domain is owned by user
+            ;;
+        a)  # check if server alias is available
+            ;;
+
+        [?])
+            ;;
+    esac
+done
+
+if [ -z $user ]; then
+    script_exit missing_user
+fi
+
+if [ -z $domain ]; then
+    script_exit missing_domain
+fi
+
+if [ -z $alias ]; then
+    script_exit missing_alias
+fi
