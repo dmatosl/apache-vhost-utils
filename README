@@ -1,0 +1,24 @@
+Apache compatible Virtual Host utilities
+
+Scripts to made easy virtual hosts configuration
+
+Installation:
+    Under construction !
+
+Using under sudo:
+    Cmnd_Alias ADMIN_SCRIPTS = /scripts/*
+
+
+Usage Examples:
+
+    # add a new virtual host to apache webserver
+    sudo /scripts/add -u mock -d domain.com -q 1024 -p anypassword
+
+    # add a new server alias to an existing domain
+    sudo /scripts/add_alias -u mock -d domain -a alias.domain.com
+
+    # suspend virtual host (redirects vhosts to standard suspended page)
+    sudo /scripts/suspend_vhost -u mock
+
+    # unsuspend virtual host (remove redirect)
+    sudo /scripts/unsuspend_vhost -u mock
