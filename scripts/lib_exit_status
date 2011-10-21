@@ -1,0 +1,48 @@
+#!/bin/bash
+# Author: dmatosl <http://github.com/dmatosl>
+
+function script_exit()
+{
+    case $1 in
+        # MISSING PARAMETERS
+        missing_user) 
+            echo "1:missing user:"
+            exit 1
+        ;;
+        missing_domain)
+            echo "2:missing domain:"
+            exit 2
+        ;;
+        missing_alias)
+            echo "3:missing alias:"
+            exit 3
+        ;;
+        missing_quota) 
+            echo "4:missing quota:"
+            exit 4
+        ;;
+        missing_password) 
+            echo "5:missing password:"
+            exit 5
+        ;;
+        
+        # USER VALIDATION
+        user_exists)
+            echo "6:user exists:"
+            exit 6
+            ;;
+        user_notvalid)
+            echo "7:username not valid:"
+            exit 7
+            ;;
+        user_length)
+            echo "8:usename length invalid, must be between 4 and 12"
+            exit 8
+            ;;
+            
+        ?)    echo "-1:unknown:"
+                exit -1
+        ;;
+    esac
+}
+

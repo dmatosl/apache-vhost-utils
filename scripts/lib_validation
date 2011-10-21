@@ -1,0 +1,35 @@
+#!/bin/bash
+# Author: dmatosl <http://github.com/dmatosl>
+
+# USER NAME VALIDATION
+function user_exists()
+{
+    if [[ -f "/etc/passwd" ]]; then
+        exists=$(egrep -wc $1 /etc/passwd)
+    fi
+    echo $exists
+}
+
+function user_length()
+{
+    arg=$1
+    len=${#arg}
+
+    if [[ $len -gt 3 && $len -lt 12 ]]; then
+        echo 0
+    else
+        echo 1
+    fi
+}
+
+function user_isvalid()
+{
+    pattern_match=$(echo $1 | sed -e s/[^a-z0-9]//g)
+    if [[ "$1" == "$pattern_match" ]]; then
+        echo 1
+    else
+        echo 0
+    fi
+
+}
+

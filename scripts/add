@@ -1,25 +1,40 @@
-#!/bin/env bash
+#!/bin/bash
 # Author: dmatosl <http://github.com/dmatosl>
 
-source $PWD/exit_status_functions
+source $PWD/lib_validation
+source $PWD/lib_exit_status
 
 # check given parameters
 while getopts u:d:q:p: opts
 do
     case "$opts" in
         u)  # check if user exists
+            if [[ $(user_exists $OPTARG) -eq 1 ]]; then
+                script_exit user_exists
+            fi
+            # check valid user name 
+            if [[ ! $(user_isvalid $OPTARG) -eq 1 ]]; then
+                script_exit user_notvalid
+            fi
             # check username length
-            echo $OPTARG
+            if [[ $(user_length) -eq 1 ]]; then
+                script_exit user_length
+            fi
+            user=$OPTARG
+            echo $user
             ;;
         d)  # check if domain exists
-            echo $OPTARG
+            domain=$OPTARG
+            echo $domain
             ;;
         q)  #check if quota is enabled
-            echo $OPTARG
+            quota=$OPTARG
+            echo $quota
             ;;
         p)  #check if password mask matches 
             #if password is empty generates random
-            echo $OPTARG
+            pass=$OPTARG
+            echo $pass
             ;;
         [?])    echo  >&2 "Usage: $0 -u username -d domain.com -q quota -p password"
                 exit 1
@@ -38,11 +53,11 @@ if [ -z $domain ] ; then
 fi
 
 # quota
-if [ -z $quota] ; then 
+if [ -z $quota ] ; then 
     script_exit missing_quota
 fi
 
 # password
-if [ -z password ]; then
+if [ -z $pass ] ; then
     script_exit missing_password
 fi
