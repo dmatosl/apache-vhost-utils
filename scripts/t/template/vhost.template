@@ -1,0 +1,14 @@
+<VirtualHost $_PUBLIC_IP:$_HTTP_PORT>
+    ServerName $_SERVER_NAME
+    ServerAlias $_SERVER_ALIAS
+    ServerAdmin $_SERVER_ADMIN
+    DocumentRoot $_SERVER_DOCUMENT_ROOT
+
+    CustomLog $_SERVER_CUSTOM_LOG
+    ErrorLog $_SERVER_ERROR_LOG
+
+    <Directory "$_SERVER_DOCUMENT_ROOT">
+    
+    </Directory>
+
+</VirtualHost>
