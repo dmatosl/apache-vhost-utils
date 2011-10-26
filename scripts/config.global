@@ -1,0 +1,3 @@
+#[global]
+site_enable_path="t/conf.d"
+template_path="t/template"

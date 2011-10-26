@@ -17,11 +17,10 @@ do
                 script_exit user_notvalid
             fi
             # check username length
-            if [[ $(user_length) -eq 1 ]]; then
+            if [[ $(user_length $OPTARG) -eq 1 ]]; then
                 script_exit user_length
             fi
             user=$OPTARG
-            echo $user
             ;;
         d)  # check if domain exists
             domain=$OPTARG
@@ -36,6 +35,8 @@ do
             pass=$OPTARG
             echo $pass
             ;;
+
+
         [?])    echo  >&2 "Usage: $0 -u username -d domain.com -q quota -p password"
                 exit 1
             ;;
