@@ -1,4 +1,13 @@
 #[global]
+
+# Environment conf
+
+# PASSWD File
+_PASSWD_FILE="t/passwd"
+
+# Apache conf files
 site_enable_path="t/conf.d"
 template_path="t/template"
+
+# Source files
 source_path="/home/dml/apache-vhost-utils/scripts"

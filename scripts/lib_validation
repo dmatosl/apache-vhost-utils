@@ -10,6 +10,7 @@ function user_exists()
     echo $exists
 }
 
+# USER NAME LENGTH
 function user_length()
 {
     arg=$1
@@ -22,6 +23,7 @@ function user_length()
     fi
 }
 
+# USER NAME PATTERN
 function user_isvalid()
 {
     pattern_match=$(echo $1 | sed -e s/[^a-z0-9]//g)
